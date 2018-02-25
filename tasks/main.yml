@@ -11,9 +11,17 @@
   with_subelements:
     - "{{ dms }}"
     - packages
-- name: Del. display-manager.service
+- name: apply variables
+  template:
+    src: "{{item}}"
+    dest: "{{confpath}}"
+  with_fileglob:
+    - templates/{{mydm}}* 
+- name: Del. display-manager.service 
   file: path=/etc/systemd/system/display-manager.service state=absent
+#- name: install new display manager # - somehow this hasn't the same effect as 'systemctl enable
+#  systemd: name= "{{ mydm }}" enabled=yes
 - name: install new display manager
-  systemd: name= "{{ mydm }}" enabled=yes
+  shell: "systemctl enable {{ mydm }}"
 - name: Set graphical target
   shell: 'systemctl set-default graphical'
