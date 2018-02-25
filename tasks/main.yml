@@ -25,3 +25,5 @@
   shell: "systemctl enable {{ mydm }}"
 - name: Set graphical target
   shell: 'systemctl set-default graphical'
+- name: restart display-manager always
+  systemd: name="{{mydm}}" state=restarted
