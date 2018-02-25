@@ -1,0 +1,11 @@
+---
+#known display managers
+dms:
+  kdm:
+    service: kdm
+    packages: ['kdm', 'kdm-themes']
+  lightdm:
+    service: lightdm
+    packages: ['lightdm'] #add greeters
+  
+  
