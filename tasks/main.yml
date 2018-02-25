@@ -1,11 +1,13 @@
 ---
-- name: Install and remove packages
-  tasks:
-    - package: name= "{{ item }}" state=present
-      with_items: "{{ dms.{{my_dm}}.packages }}"
-    - package: name= "{{ item.packages }}" state=absent
-      with_dict: "{{ dms }}"
-
-    - file: path=/etc/systemd/system/display-manager.service state=absent
-    - systemd: name= "{{ dms.{{my_dm}}.service }}" enabled=yes
-    - shell: 'systemctl set-default graphical'
+- name: Install dm
+  package: name= "{{ item }}" state=present
+  with_items: "{{ dms.{{my_dm}}.packages }}"
+- name: Remove all other packages
+  package: name= "{{ item.packages }}" state=absent
+  with_dict: "{{ dms }}"
+- name: Del. display-manager.service
+  file: path=/etc/systemd/system/display-manager.service state=absent
+- name: install new display manager
+  systemd: name= "{{ dms.{{my_dm}}.service }}" enabled=yes
+- name: Set graphical target
+  shell: 'systemctl set-default graphical'
