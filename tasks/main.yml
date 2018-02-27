@@ -1,4 +1,6 @@
 ---
+- name: Make sure x is installed:
+  package: name="@base-x" state=present
 - name: Install dm
   package: name="{{ item.1 }}" state=present
   when: item.0.name == mydm
