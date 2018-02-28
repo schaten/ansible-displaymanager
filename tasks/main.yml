@@ -16,7 +16,7 @@
 - name: configurate dm
   template:
     src: "templates/{{item.1.file}}.j2"
-    dest: "{{item.1.path}}"
+    dest: "{{item.1.path}}/{{item.1.file}}"
   when: item.0.name == mydm
   with_subelements:
     - "{{ dms }}"
