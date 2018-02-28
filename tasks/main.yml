@@ -23,7 +23,7 @@
     - config
 - name: Copy ressources
   copy:
-    src: "{{item.file}}.j2"
+    src: "{{item.file}}"
     dest: "{{item.path}}"
   with_items:
     - "{{ressources}}"
