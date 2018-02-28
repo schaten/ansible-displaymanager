@@ -3,5 +3,13 @@
 dms:
   - name: kdm
     packages: ['kdm', 'kdm-themes']
+    config:
+      - file: kdmrc
+        path: "/etc/kde/kdm"
   - name: lightdm
     packages: ['lightdm'] #add greeters
+    config:
+      - file: lightdm.conf
+        path: "/etc/lightdm"
+      - file: lightdm-gtk-greeter.conf
+        path: "/etc/lightdm"

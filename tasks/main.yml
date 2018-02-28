@@ -13,12 +13,14 @@
   with_subelements:
     - "{{ dms }}"
     - packages
-- name: apply variables
+- name: configurate dm
   template:
-    src: "{{item}}"
-    dest: "{{confpath}}"
-  with_fileglob:
-    - templates/{{mydm}}* 
+    src: "{{item.1.file}}.j2"
+    dest: "{{item.1.path}}"
+  when: item.0.name == mydm
+  with_subelements:
+    - "{{ dms }}"
+    - config 
 - name: Del. display-manager.service 
   file: path=/etc/systemd/system/display-manager.service state=absent
 #- name: install new display manager # - somehow this hasn't the same effect as 'systemctl enable
