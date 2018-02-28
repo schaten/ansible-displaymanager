@@ -15,16 +15,20 @@
     - packages
 - name: configurate dm
   template:
-    src: "{{item.1.file}}.j2"
+    src: "templates/{{item.1.file}}.j2"
     dest: "{{item.1.path}}"
   when: item.0.name == mydm
   with_subelements:
     - "{{ dms }}"
-    - config 
+    - config
+- name: Copy ressources
+  copy:
+    src: "{{item.file}}.j2"
+    dest: "{{item.path}}"
+  with_items:
+    - ressources
 - name: Del. display-manager.service 
   file: path=/etc/systemd/system/display-manager.service state=absent
-#- name: install new display manager # - somehow this hasn't the same effect as 'systemctl enable
-#  systemd: name= "{{ mydm }}" enabled=yes
 - name: install new display manager
   shell: "systemctl enable {{ mydm }}"
 - name: Set graphical target
