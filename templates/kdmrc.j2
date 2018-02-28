@@ -1,0 +1,76 @@
+[General]
+AuthDir=/var/run/kdm
+ConfigVersion=2.3
+ConsoleTTYs=tty1,tty2,tty3,tty4,tty5,tty6
+PidFile=/var/run/kdm/kdm.pid
+ReserveServers=:1,:2,:3
+ServerVTs=-1
+StaticServers=:0
+
+[Shutdown]
+BootManager=None
+HaltCmd=/sbin/poweroff
+RebootCmd=/sbin/shutdown -r now
+
+[X-*-Core]
+AllowShutdown=Root
+AutoReLogin=false
+ClientLogFile=/dev/null
+ForceUserAuthDir=true
+Resources=/etc/kde/kdm/Xresources
+Session=/etc/kde/kdm/Xsession
+SessionsDirs=/usr/share/xsessions,/usr/share/kde4/apps/kdm/sessions
+Setup=/etc/kde/kdm/Xsetup
+
+[X-*-Greeter]
+AntiAliasing=true
+BackgroundCfg=/var/lib/kdm/backgroundrc
+ColorScheme=
+EchoPasswd=true
+FaceSource=PreferUser
+FailFont=Sans Serif,12,-1,5,50,0,0,0,0,0
+FocusPasswd=true
+ForgingSeed=1108476160
+GUIStyle=Plastique
+GreetFont=Sans Serif,16,-1,5,50,0,0,0,0,0
+GreetString=Welcome to %n
+GreeterPos=50,50
+HiddenUsers=root
+Language=en_US
+LogoArea=Logo
+LogoPixmap=/usr/share/pixmaps/logo.png
+MaxShowUID=65530
+MinShowUID=-1
+SelectedUsers=
+ShowUsers=NotHidden
+SortUsers=true
+StdFont=Sans Serif,10,-1,5,50,0,0,0,0,0
+Theme=/usr/share/kde4/apps/kdm/themes/BeefyMiracle
+UseBackground=true
+UseTheme=false
+UserCompletion=false
+UserList=false
+
+[X-:*-Core]
+AllowShutdown=Root
+NoPassEnable=false
+NoPassUsers=
+ServerArgsLocal=-background none -nolisten tcp
+ServerTimeout=30
+TerminateServer=true
+
+[X-:*-Greeter]
+DefaultUser=
+FocusPasswd=true
+LoginMode=DefaultLocal
+PreselectUser=None
+
+[X-:0-Core]
+AutoLoginEnable=false
+AutoLoginLocked=false
+AutoLoginUser=
+
+[Xdmcp]
+Enable=false
+Willing=/etc/kde/kdm/Xwilling
+Xaccess=/etc/kde/kdm/Xaccess
