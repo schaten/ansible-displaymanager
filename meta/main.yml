@@ -1,0 +1,7 @@
+alaxy_info:
+  author: Philip
+  description: Choose your display manager
+  platforms:
+    - name: Fedora
+      versions:
+        - 27
