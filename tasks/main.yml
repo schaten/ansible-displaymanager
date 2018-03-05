@@ -24,7 +24,7 @@
 - name: In case kdm is used
   lineinfile:
     path: /etc/xscreensaver/XScreenSaver.ad.header
-    regexp: "*newLoginCommand:.*"
+    regexp: "\\*newLoginCommand:.*"
     line: "*newLoginCommand:       kdmctl reserve"
     state: present
   notify: 'update screensaver hacks'
