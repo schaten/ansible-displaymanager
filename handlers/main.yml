@@ -1,0 +1,3 @@
+---
+- name: update screensaver hacks
+  shell: '/usr/sbin/update-xscreensaver-hacks'
