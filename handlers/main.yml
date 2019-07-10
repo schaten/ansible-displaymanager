@@ -1,3 +1,5 @@
 ---
 - name: update screensaver hacks
   shell: '/usr/sbin/update-xscreensaver-hacks'
+- name: dconf
+  shell: "dconf update"

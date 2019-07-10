@@ -1,0 +1,14 @@
+- name: configure dm
+  template:
+    src: "templates/{{item.1.file}}.j2"
+    dest: "{{item.1.path}}/{{item.1.file}}"
+  when: item.0.name == mydm
+  with_subelements:
+    - "{{ dms }}"
+    - config
+- name: Copy ressources
+  copy:
+    src: "{{item.file}}"
+    dest: "{{item.path}}"
+  with_items:
+    - "{{ressources}}"

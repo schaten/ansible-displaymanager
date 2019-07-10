@@ -1,11 +1,15 @@
 ---
 #known display managers
 dms:
+  - name: gdm
+    packages: ['gdm']
+
   - name: kdm
     packages: ['kdm', 'kdm-themes']
     config:
       - file: kdmrc
         path: "/etc/kde/kdm"
+
   - name: lightdm
     packages: ['lightdm'] #add greeters
     config:

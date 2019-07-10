@@ -1,0 +1,34 @@
+---
+- name: "gdm | create gdm profile"
+  template:
+    src: gdm/gdm
+    dest: /etc/dconf/profile/gdm
+
+- name: "gdm | disable userlist"
+  template:
+    src: gdm/dconf-gdm.d/00-login-screen
+    dest: /etc/dconf/db/gdm.d/
+  notify: dconf
+  when: hide_users
+
+- name: "gdm | enable ctrl+alt+bkspc"
+  template:
+    src: "gdm/dconf-local.d/{{item}}"
+    dest: /etc/dconf/db/local.d/
+  loop:
+    - 00-input-sources
+    - 01-logout-cmd
+    - 02-tab
+  notify: dconf
+- name: xscreensaver-fix for xfce-users
+  lineinfile:
+    path: /etc/xscreensaver/XScreenSaver.ad.header
+    regexp: "\\*newLoginCommand:.*"
+    line: "*newLoginCommand:      gdmflexiserver -ls"
+    state: absent
+  notify: 'update screensaver hacks'
+#- name: "gdm | enable custom logo"
+#  template:
+#    src: gdm/dconf-gdm.d/01-logo
+#    dest: /etc/dconf/db/gdm.d/
+#  notify: dconf

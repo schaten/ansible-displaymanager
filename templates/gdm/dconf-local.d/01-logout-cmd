@@ -1,0 +1,11 @@
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/ctrlaltbkspc]
+binding='<Primary><Alt>BackSpace'
+name='logout'
+command='gnome-session-quit --logout'
+
+[org/gnome/settings-daemon/plugins/media-keys]
+custom-keybindings = ['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/ctrlaltbkspc/']
+
+[org/gnome/settings-daemon/plugins/media-keys]
+logout = ''
+screensaver = '<Primary><Alt>Delete'

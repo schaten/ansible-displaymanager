@@ -1,0 +1,3 @@
+[org/gnome/desktop/input-sources]
+# Enable Ctrl-Alt-Backspace for all users
+xkb-options=['terminate:ctrl_alt_bksp']
